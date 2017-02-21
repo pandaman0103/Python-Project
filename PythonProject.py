@@ -24,9 +24,13 @@ class ShortBond(Bond):
             self.amount = amount
         else:
             raise ValueError('The minimum amount of short bond is $1000')
-        self._miniprice = miniprice              # Having a underline before a variable can make the value of this variable be inchanged from the exterior.
-        self._miniterm = miniterm
-        self._R_year = R_year
+        self.miniprice = miniprice
+        self.miniterm = miniterm
+        self.R_year = R_year
+        self.miniprice = 1000
+        self.miniterm = 2
+        self.R_year = 0.01
+
     def GetComRateS(self, t):
         # super is up to the class before which is a object "Bond"
         return super(ShortBond, self).GetComRate(t)
@@ -41,14 +45,35 @@ class LongBond(Bond):
             self.amount = amount
         else:
             raise ValueError('The minimum amount of short bond is $3000')
-        if miniprice != 1000:
-            self._miniprice = 1000
-        else:
-            raise ValueError('The minimum amount of short bond is $3000')
-        self._miniterm = miniterm
-        self._R_year = R_year
+        self.miniprice = miniprice
+        self.miniterm = miniterm
+        self.R_year = R_year
+        self.miniprice = 3000
+        self.miniterm = 5
+        self.R_year = 0.03
     def GetComRateL(self, t):
         return super(LongBond, self).GetComRate(t)
 
-Sbond1 = ShortBond(3,2000)
-print(Sbond1.R_year)
+
+#import the pakage for plotting
+import matplotlib.pyplot as plt
+
+#write function "mindollar" to abstract the change of minimumal price with time
+def mindollar(iniprice,t,r):
+    x = iniprice*(1+r)**t
+    return x
+
+# fix the arrays of X axis and Y axis in order to plot
+x = [t for t in range(101)]
+y1 = [mindollar(1000,t,0.01) for t in range(101)]
+y2 = [mindollar(3000,t,0.03) for t in range(101)]
+
+plt.plot(x,y1)
+plt.plot(x,y2)
+plt.title('minimal price for different type of bonds')
+plt.legend(['short term bond', 'long term bond'])
+plt.show()
+
+
+
+
