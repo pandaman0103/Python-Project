@@ -2,7 +2,7 @@
 # The group number is Lu Chengwei and Li Mingjun
 # The whole project is divided by four parts
 
-##################    The first part: Short and longterm bonds    ###############
+##################    Part I : Short and longterm bonds    ###############
 #Firstly, create the bond as a class
 class Bond(object):
     def __init__(self, term, amount, miniprice, miniterm, R_year):
@@ -73,7 +73,4 @@ plt.plot(x,y2)
 plt.title('minimal price for different type of bonds')
 plt.legend(['short term bond', 'long term bond'])
 plt.show()
-
-
-
 
