@@ -46,6 +46,7 @@ filepath = os.path.join(datapath,"YHOO.csv")
 YHOO_df = pd.read_csv(filepath,";")[[0,2]]
 YHOO_df['Date'] = YHOO_df['Date'].astype('datetime64[ns]')
 
+print(YHOO_df)
 #Define the class 'Stock'
 class Stock(object):
     def __init__(self, term, amount, name, number, date, price):
