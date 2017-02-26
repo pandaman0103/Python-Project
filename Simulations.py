@@ -1,3 +1,6 @@
+# This file is to finish the Project of "python for finance" course.
+# The group number is Lu Chengwei and Li Mingjun
+
 ########################        part IV: Simulations        ########################
 from PythonProject import Invest,Price_Return_stock,autolabel
 from PythonProject import A_Investor,D_Investor,M_Investor
