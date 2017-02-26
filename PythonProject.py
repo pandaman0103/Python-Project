@@ -27,7 +27,7 @@ class Bond(object):
         self.R_com = (1 + self.R_year)**t - 1
         return self.R_com
 
-# write function "mindollar" to abstract the change of minimumal price with time
+# write function "mindollar" to abstract the change of minimal price with time
 def mindollar(iniprice,t,r):
     x = iniprice*(1+r)**t
     return x
@@ -80,9 +80,9 @@ def Price_Return_stock(startdate,enddate,name):
             pass
 
     while a not in list(name_df['Date']):
-        a = a - datetime.timedelta(days=1)
+        a -= datetime.timedelta(days=1)
     while b not in list(name_df['Date']):
-        b = b - datetime.timedelta(days=1)
+        b -= datetime.timedelta(days=1)
 
     Price = round(float(name_df[name_df['Date']== a]['High']),2)
     Return = round(((float(name_df[name_df['Date']== b]['High']) - Price)/Price),2)
@@ -124,17 +124,14 @@ class M_Investor(Investor):
         self.start = start
         self.mode = 'Mixed'
 
-# short term bond and long term bond with the same term : 10 years,initial budget = 12000
-budget = 12000
-
 #this function is to calculate the return of every investor depending on different types and terms
 def Invest(investor,end_investment):
     enddate = datetime.datetime.strptime(end_investment, '%Y-%m-%d')
     startdate = datetime.datetime.strptime(investor.start, '%Y-%m-%d')
-    # while enddate not in list(list_df[0]['Date']):
-    #     enddate -= datetime.timedelta(days=1)
-    # while startdate not in list(list_df[0]['Date']):
-    #     startdate -= datetime.timedelta(days=1)
+    while enddate not in list(list_df[0]['Date']):
+        enddate -= datetime.timedelta(days=1)
+    while startdate not in list(list_df[0]['Date']):
+        startdate -= datetime.timedelta(days=1)
 
     if investor.mode == 'Defensive':
         if randint(0, 1) == 0:                 # the investor will invest only in the short bond
