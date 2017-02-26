@@ -146,7 +146,7 @@ def Invest(investor,end_investment):
             budget_LB = nb_LB * 3000
             nb_SB = math.floor((investor.Budget - budget_LB) / 1000)
 
-        return_defen = round(3000 * nb_LB * (1 + 0.03) ** math.floor((enddate - startdate).days/365) + 1000 * nb_SB * (1 + 0.01) ** math.floor((enddate - startdate).days/365), 2)
+        return_defen = round(3000 * nb_LB * (1 + 0.03) ** math.floor((enddate - startdate).days/365+1) + 1000 * nb_SB * (1 + 0.01) ** math.floor((enddate - startdate).days/365+1), 2)
 
         return return_defen
 
@@ -193,8 +193,8 @@ def Invest(investor,end_investment):
                 budget_LB = nb_LB * 3000
                 nb_SB = math.floor((investor.Budget - budget_LB) / 1000)
 
-            return_mix = round(3000 * nb_LB * (1 + 0.03) ** math.floor((enddate - startdate).days / 365) + 1000 * nb_SB * (
-                                1 + 0.01) ** math.floor((enddate - startdate).days / 365), 2)
+            return_mix = round(3000 * nb_LB * (1 + 0.03) ** math.floor((enddate - startdate).days / 365+1) + 1000 * nb_SB * (
+                                1 + 0.01) ** math.floor((enddate - startdate).days / 365+1), 2)
 
             return return_mix
 
